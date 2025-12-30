@@ -1,4 +1,6 @@
-![Terraform Project Badge](./trophy-terraform.png)
+<p align="center">
+  <img src="./trophy-terraform.png" alt="Terraform Project Badge" width="220">
+</p>
 
 # AWS S3 Bucket Automation with Terraform
 
