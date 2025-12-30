@@ -1,6 +1,6 @@
 ![Terraform Project Badge](./trophy-terraform.png)
 
-# Create S3 Buckets with Terraform
+# AWS S3 Bucket Automation with Terraform
 
 **Project Link:** http://learn.nextwork.org/projects/aws-devops-terraform1  
 **Author:** Shane Brown  
@@ -8,74 +8,106 @@
 
 ---
 
-## Project Overview
+## Overview
 
-This project demonstrates how to use **Terraform** to automate the creation and management of AWS infrastructure, specifically an **Amazon S3 bucket**. The goal was to gain hands-on experience with Infrastructure as Code (IaC) by defining, deploying, and managing cloud resources through configuration files rather than manual setup.
+This project demonstrates how to provision and manage AWS infrastructure using **Terraform**. The focus is on building and managing an **Amazon S3 bucket** using Infrastructure as Code (IaC), including authentication, planning, deployment, tagging, and object uploads.
 
-The project walks through the full Terraform workflow, from initialization and planning to applying changes and validating deployed resources. It also includes a project extension that uploads an object to the S3 bucket using Terraform.
+The project follows real-world DevOps practices and highlights Terraform’s full workflow from initialization to deployment.
 
 ---
 
-## Tools and Technologies
+## Tech Stack
 
-**Services Used**
-- Amazon S3
 - Terraform
+- Amazon S3
 - AWS CLI
+- AWS IAM (Access Keys)
+- WSL (Kali Linux)
 
-**Core Concepts**
-- Infrastructure as Code (IaC)
-- Terraform providers and resources
-- Configuration blocks
+---
+
+## Key Features
+
+- Automated S3 bucket creation using Terraform
+- Environment tagging (`Environment = "Dev"`)
+- Secure AWS authentication via AWS CLI
 - Terraform state management
-- Resource tagging
-- Command workflow: `init`, `plan`, `apply`
-
----
-
-## What I Built
-
-- A fully managed S3 bucket created with Terraform
-- Environment tagging using `Environment = "Dev"`
-- AWS authentication using AWS CLI access keys
-- An uploaded S3 object managed by Terraform
-- Verified deployment through both Terraform output and AWS Console
-
----
-
-## Terraform Configuration Structure
-
-The Terraform configuration is organized using modular blocks:
-
-- **Provider Block**  
-  Defines AWS as the cloud provider and establishes the environment context.
-
-- **Resource Block**  
-  Specifies the S3 bucket and its configuration, acting as the blueprint for the infrastructure.
-
-- **Output Block**  
-  Exposes useful information, such as the bucket name or ARN, after deployment.
-
-This structure improves readability, maintainability, and scalability while allowing changes to be made safely and independently.
+- Uploaded and managed S3 objects via Terraform
+- Verified deployment through Terraform and AWS Console
 
 ---
 
 ## Terraform Workflow
 
 1. **terraform init**  
-   Initializes the project and installs required provider plugins.
+   Initializes the project and installs provider plugins.
 
 2. **terraform plan**  
-   Previews infrastructure changes by comparing the desired state with the current environment.
+   Generates a preview of infrastructure changes.
 
 3. **terraform apply**  
-   Executes the plan and provisions real AWS resources.
+   Provisions real AWS resources and manages state.
 
-Running these commands in sequence ensures safe, predictable deployments.
+This workflow ensures safe, predictable infrastructure changes.
+
+---
+
+## Configuration Structure
+
+- **Provider Block**  
+  Defines AWS as the cloud provider.
+
+- **Resource Block**  
+  Creates and configures the S3 bucket.
+
+- **Output Block**  
+  Exposes useful deployment details.
+
+The modular structure improves readability, scalability, and maintainability.
 
 ---
 
 ## AWS Authentication
 
-During planning, I encountered the error:
+During planning, Terraform returned:
 
+
+This was resolved by:
+- Installing AWS CLI
+- Generating AWS access keys
+- Configuring local credentials
+
+Terraform then authenticated successfully and deployed resources.
+
+---
+
+## Extension: Uploading an S3 Object
+
+As an extension, the configuration was updated to upload an object to the S3 bucket. After updating `main.tf`, `terraform apply` was run again to reflect the change.
+
+Validation was performed by:
+- Reviewing Terraform apply output
+- Confirming the object in the AWS S3 console
+
+---
+
+## Project Reflection
+
+**Duration:** ~2 hours  
+
+**Challenge:**  
+Choosing between Windows PowerShell and WSL (Kali Linux). Both required testing and configuration.
+
+**Result:**  
+Kali Linux was selected for a smoother Terraform workflow.
+
+**Outcome:**  
+A fully automated, reproducible AWS deployment managed entirely through code.
+
+---
+
+## Takeaway
+
+This project reinforced core DevOps and cloud engineering skills, including Infrastructure as Code, Terraform workflows, AWS authentication, and state-driven resource management.
+
+---
