@@ -1,8 +1,14 @@
 <p align="center">
-  <img src="./trophy-terraform.png" alt="Terraform Project Badge" width="220">
+  <img src="./trophy-terraform.png" alt="Terraform Project Badge" width="200">
+</p>
+
+<p align="center">
+  <a href="./documentation.md">Documentation</a> • 
+  <a href="http://learn.nextwork.org/projects/aws-devops-terraform1">Project Link</a>
 </p>
 
 # AWS S3 Bucket Automation with Terraform
+
 
 **Project Link:** http://learn.nextwork.org/projects/aws-devops-terraform1  
 **Author:** Shane Brown  
